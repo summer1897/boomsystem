@@ -1,0 +1,4 @@
+mybatis:
+  config-location: classpath:mapper/**/*.xml
+  type-aliases-package: com.boom.rbac.domain
+  mapper-locations: com.boom.rbac.mapper

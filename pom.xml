@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <main.version>1.0.0</main.version>
+    </properties>
+
+    <parent>
+        <groupId>com.summer.base</groupId>
+        <artifactId>shiro-module</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.summer.boom</groupId>
+    <artifactId>BoomSystem</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>boom-rbac</module>
+    </modules>
+
+</project>
