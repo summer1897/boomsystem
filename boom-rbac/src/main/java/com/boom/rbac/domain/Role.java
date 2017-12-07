@@ -1,6 +1,7 @@
 package com.boom.rbac.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by yangyang on 2017/12/7.
@@ -16,6 +17,12 @@ public class Role implements Serializable {
     private String description;
     /**标识角色是否可用，0：不可用，1：可用*/
     private Byte available = 0;
+
+    /**角色所具有的资源*/
+    List<Permission> permissions;
+
+    /**角色对应的所有用户*/
+    List<User> users;
 
     public String getId() {
         return id;
@@ -47,5 +54,21 @@ public class Role implements Serializable {
 
     public void setAvailable(Byte available) {
         this.available = available;
+    }
+
+    public List<Permission> getPermissions() {
+        return this.permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
+
+    public List<User> getUsers() {
+        return this.users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

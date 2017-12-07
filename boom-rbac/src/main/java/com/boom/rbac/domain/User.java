@@ -1,6 +1,7 @@
 package com.boom.rbac.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by summer on 2017/12/7.
@@ -21,6 +22,9 @@ public class User implements Serializable {
     private String salt;
     /**用户状态，0：创建未认证（比如，邮箱注册，没有激活），1：正常状态，2：用户被锁定*/
     private Byte state;
+
+    /**用户对应的所有角色*/
+    private List<Role> roles;
 
     public String getId() {
         return id;
@@ -76,5 +80,13 @@ public class User implements Serializable {
 
     public void setState(Byte state) {
         this.state = state;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

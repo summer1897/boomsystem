@@ -1,5 +1,6 @@
 package com.boom.rbac.config;
 
+import com.boom.rbac.realm.RBACShiroRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -27,7 +28,7 @@ public class RBACShiroConfig{
      */
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
-        log.info("RBACShiroConfig.shiroFilter method invoke");
+        log.info("RBACShiroConfig.shiroFilter() method invoke");
 
         //1.初始化ShiroFilterFactoryBean
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -59,7 +60,14 @@ public class RBACShiroConfig{
     }
 
     @Bean
+    public RBACShiroRealm rBACShiroRealm() {
+        return new RBACShiroRealm();
+    }
+
+    @Bean
     public SecurityManager securityManager() {
-        return new DefaultWebSecurityManager();
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(rBACShiroRealm());
+        return securityManager;
     }
 }
