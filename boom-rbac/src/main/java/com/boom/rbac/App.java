@@ -1,4 +1,4 @@
-package com.boom.rbac.main;
+package com.boom.rbac;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
