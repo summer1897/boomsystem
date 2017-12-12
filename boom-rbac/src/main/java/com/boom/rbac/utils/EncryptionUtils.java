@@ -1,4 +1,4 @@
-package com.boom.utils;
+package com.boom.rbac.utils;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 

@@ -1,10 +1,9 @@
 server:
   port: 9000
+  tomcat:
+    uri-encoding: utf-8
+  context-path: /boom
 spring:
-  mvc:
-      view:
-        prefix: /WEB-INF/view/
-        suffix: .jsp
   datasource:
       name: boomsystem
       url: jdbc:mysql://localhost:3306/boomsystem
@@ -38,7 +37,13 @@ spring:
     timeout: 0
     sentinel:
       master: #main node name
-      nodes: #all nodes' name separated by comma,host:port
+      nodes:  #all nodes' name separated by comma,host:port
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
 
 mybatis:
   type-aliases-package: com.boom.rbac.domain

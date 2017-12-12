@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by summer on 2017/12/7.
  * ShiroFilter configure
  */
-//@Configuration
+@Configuration
 public class RBACShiroConfig{
 
     private static final Logger log = LoggerFactory.getLogger(RBACShiroConfig.class);

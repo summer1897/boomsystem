@@ -2,15 +2,12 @@ package com.boom.rbac.controller;
 
 import com.boom.rbac.domain.User;
 import com.boom.rbac.service.IUserService;
-import com.boom.utils.EncryptionUtils;
-import com.boom.utils.RandomIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by summer on 2017/12/8.
