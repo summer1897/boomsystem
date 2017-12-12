@@ -1,6 +1,10 @@
 server:
   port: 9000
 spring:
+  mvc:
+      view:
+        prefix: /WEB-INF/view/
+        suffix: .jsp
   datasource:
       name: boomsystem
       url: jdbc:mysql://localhost:3306/boomsystem
