@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by summer on 2017/12/7.
  * ShiroFilter configure
  */
-@Configuration
+//@Configuration
 public class RBACShiroConfig{
 
     private static final Logger log = LoggerFactory.getLogger(RBACShiroConfig.class);
@@ -48,7 +48,7 @@ public class RBACShiroConfig{
         filterChainDefinitionMap.put("/**","authc");
 
         //4.设置登录页面,默认回去webapp下面寻找login.jsp页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setLoginUrl("/login.html");
         //5.设置登录成功默认显示页面
         shiroFilterFactoryBean.setSuccessUrl("/index");
         //6.设置为授权页面
