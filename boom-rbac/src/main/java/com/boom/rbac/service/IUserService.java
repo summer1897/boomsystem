@@ -36,10 +36,10 @@ public interface IUserService {
 
     /**
      * 分页查询所有用户信息
-     * @param start 当前页其实位置
-     * @param pageNum 当前页显示数据量
+     * @param pageNum 当前页其实位置
+     * @param pageSize 当前页显示数据量
      * @return @{List<User>}
      */
-    List<User> queryAllByPage(Integer start,Integer pageNum);
+    List<User> queryAllByPagination(Integer pageNum,Integer pageSize);
 
 }

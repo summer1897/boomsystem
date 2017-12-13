@@ -2,40 +2,72 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.boom.rbac.mapper.UserMapper" >
-    <resultMap id="BaseResultMap" type="com.boom.rbac.domain.User" >
+    <resultMap id="BaseResultMap" type="User" >
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
         <result column="salt" property="salt" jdbcType="VARCHAR" />
         <result column="state" property="state" jdbcType="SMALLINT" />
+        <collection property="roles" column="role_id" javaType="java.util.List" select="queryRole">
+            <!--<id column="r_id" property="id" jdbcType="VARCHAR"/>
+            <result column="name" property="name"/>
+            <result column="description" property="description"/>
+            <result column="available" property="available"/>-->
+        </collection>
     </resultMap>
+
+    <resultMap id="roleResult" type="Role">
+        <id column="r_id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="available" property="available"/>
+    </resultMap>
+
     <sql id="userFields">
         id,user_name,nick_name,password,salt,state
     </sql>
+    <sql id="roleFields">
+        r.id r_id,r.name,r.description,r.available
+    </sql>
+    <!--联表字段-->
+    <sql id="userRoleFields">
+        u.id,u.user_name,u.nick_name,u.password,u.salt,u.state,
+        r.id r_id,r.name,r.description,r.available
+    </sql>
+
+    <select id="queryRole" resultMap="roleResult">
+        SELECT
+            <include refid="roleFields"/>
+        FROM
+          role r,user_role ur
+        WHERE
+          r.id = ur.role_id AND r.id = #{id}
+    </select>
 
     <select id="queryByName" resultMap="BaseResultMap">
         SELECT
-        <include refid="userFields"/>
+          <include refid="userFields"/>
         FROM
-        user
+          user
         WHERE
-        user_name = #{name}
+          user_name = #{name}
     </select>
 
-    <select id="queryUser" resultMap="BaseResultMap">
+    <!--<select id="queryUser" resultMap="BaseResultMap">
         SELECT
-            <include refid="userFields"/>
+            <include refid="userRoleFields"/>
         FROM
-            user
+            user u,role r,user_role ur
         WHERE
-            user_name = #{name} AND password = #{password}
-    </select>
+            u.user_name = #{name} AND u.password = #{password} AND
+            u.id = ur.user_id AND r.id = ur.role_id
+    </select>-->
 
     <select id="queryAll" resultMap="BaseResultMap">
         SELECT
-        <include refid="userFields"/>
+          <include refid="userFields"/>
         FROM
-        user
+          user
     </select>
 </mapper>

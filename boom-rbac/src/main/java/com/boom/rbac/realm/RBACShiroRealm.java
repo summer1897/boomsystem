@@ -35,7 +35,7 @@ public class RBACShiroRealm extends AuthorizingRealm{
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         for (Role role : user.getRoles()) {
-            authorizationInfo.addRole(role.getRole());
+            authorizationInfo.addRole(role.getName());
             for (Permission permission : role.getPermissions()) {
                 authorizationInfo.addStringPermission(permission.getPermission());
             }

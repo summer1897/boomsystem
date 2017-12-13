@@ -3,6 +3,7 @@ package com.boom.rbac.service.impl;
 import com.boom.rbac.domain.User;
 import com.boom.rbac.mapper.UserMapper;
 import com.boom.rbac.service.IUserService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> queryAllByPage(Integer start, Integer pageNum) {
-        return userMapper.queryAllByPage(start,pageNum);
+    public List<User> queryAllByPagination(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return userMapper.queryAll();
     }
 }

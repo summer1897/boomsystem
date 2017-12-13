@@ -1,6 +1,7 @@
 package com.boom.rbac.mapper;
 
 import com.boom.rbac.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date 2017/12/7 下午10:25
  * @Description User dao层操作接口
  */
+@Repository
 public interface UserMapper {
 
     /**
@@ -33,13 +35,5 @@ public interface UserMapper {
      * @return @{List<User>}
      */
     List<User> queryAll();
-
-    /**
-     * 分页查询所有用户信息
-     * @param start 当前页其实位置
-     * @param pageNum 当前页显示数据量
-     * @return @{List<User>}
-     */
-    List<User> queryAllByPage(Integer start,Integer pageNum);
 
 }

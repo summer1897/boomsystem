@@ -12,7 +12,7 @@ public class Role implements Serializable {
     /**角色唯一编号*/
     private String id;
     /**角色名*/
-    private String role;
+    private String name;
     /**角色描述*/
     private String description;
     /**标识角色是否可用，0：不可用，1：可用*/
@@ -32,12 +32,12 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
