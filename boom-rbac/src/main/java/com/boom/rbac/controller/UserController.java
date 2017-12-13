@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by summer on 2017/12/8.
- */
 @RestController
 @RequestMapping("/user")
 public class UserController {
