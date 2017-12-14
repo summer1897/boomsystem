@@ -1,13 +1,15 @@
 package com.boom.rbac.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Intellij IDEA
  *
  * @Author summer
  * @Date 2017/12/7 下午9:40
- * @Description
+ * @Description 权限实体类
  */
 public class Permission implements Serializable {
 
@@ -18,7 +20,7 @@ public class Permission implements Serializable {
     /**名称*/
     private String name;
     /**资源类型（有菜单和按钮）*/
-    private String resourceType;
+    private String type;
     /**资源路径，如果为空，则为顶级菜单*/
     private String url;
     /**权限字符串,如menu,role:*,button,role:create,role:delete,role:update,role:view*/
@@ -29,6 +31,8 @@ public class Permission implements Serializable {
     private String parentIds;
     /**是否禁用，0表示禁用，1启用*/
     private Byte available = 0;
+
+    private List<Permission> children = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -46,12 +50,12 @@ public class Permission implements Serializable {
         this.name = name;
     }
 
-    public String getResourceType() {
-        return resourceType;
+    public String getType() {
+        return type;
     }
 
-    public void setResourceType(String resourceType) {
-        this.resourceType = resourceType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUrl() {
@@ -92,5 +96,17 @@ public class Permission implements Serializable {
 
     public void setAvailable(Byte available) {
         this.available = available;
+    }
+
+    public List<Permission> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Permission> children) {
+        this.children = children;
+    }
+
+    public void addChildren(Permission permission) {
+        this.children.add(permission);
     }
 }

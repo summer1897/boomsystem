@@ -29,11 +29,11 @@ CREATE TABLE role (
 CREATE TABLE permission (
   id VARCHAR(200) NOT NULL PRIMARY KEY COMMENT '资源唯一标识ID',
   name VARCHAR(200) NOT NULL COMMENT '资源名称',
-  resource_type VARCHAR(100) COMMENT '资源类型，有菜单(menu)，按钮(button)',
+  type VARCHAR(100) COMMENT '资源类型，有菜单(menu)，按钮(button)',
   url VARCHAR(300) COMMENT '资源路径',
   permission VARCHAR(500) COMMENT '权限字符串,如,user,role:*,按钮,button:create..',
   parent_id VARCHAR(200) COMMENT '父级菜单Id',
-  parents_id VARCHAR(500) COMMENT '父级编号列表',
+  parent_ids VARCHAR(500) COMMENT '父级编号列表',
   available SMALLINT DEFAULT 1 COMMENT '是否可用,默认为1,0:禁用，1:表示可用'
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -70,7 +70,7 @@ VALUES ('139057968221540044','admin','管理员',1),
   ('1254905593251642104','user','一般客户',1);
 
 #initial permission data
-INSERT INTO permission(id,name,resource_type,url,permission,parent_id,parents_id,available)
+INSERT INTO permission(id,name,type,url,permission,parent_id,parent_ids,available)
 VALUES ('4354892092560042057','权限管理','menu','','admin:*','','',1),
   ('2404987392158945143','用户管理','menu','/authority/user/list','admin:*','4354892092560042057','4354892092560042057',1),
   ('4015732699209802203','角色管理','menu','/authority/role/list','admin:*','4354892092560042057','4354892092560042057',1),

@@ -48,7 +48,7 @@ public class RoleController {
         log.info("分页查询角色对象,pageNum={},pageSize={}===>RoleController.listsByPagination()",pageNum,pageSize);
 
         ResultVo<List<Role>> resultVo = new ResultVo<>();
-        resultVo.setStatus(1);
+        resultVo.setCode(1);
         resultVo.setMsg("");
         resultVo.setPageNum(pageNum);
         resultVo.setPageSize(pageSize);

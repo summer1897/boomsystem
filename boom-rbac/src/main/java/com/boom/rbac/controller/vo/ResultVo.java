@@ -12,7 +12,7 @@ public class ResultVo<T> {
     /**
      * 状态码,1表示成功，-1表示失败
      */
-    private int status;
+    private int code;
     /**
      * 反馈信息
      */
@@ -30,23 +30,26 @@ public class ResultVo<T> {
 
     private T data;
 
-    public ResultVo() {
-    }
+    public ResultVo() {}
 
-    public ResultVo(int status, String msg, int pageNum, int pageSize, T data) {
-        this.status = status;
+    public ResultVo(int code,String msg,T data) {
+        this.code = code;
         this.msg = msg;
-        this.pageNum = pageNum;
-        this.pageSize = pageSize;
         this.data = data;
     }
 
-    public int getStatus() {
-        return status;
+    public ResultVo(int code, String msg, int pageNum, int pageSize, T data) {
+        this(code,msg,data);
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getMsg() {

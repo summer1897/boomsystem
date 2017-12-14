@@ -2,29 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.boom.rbac.mapper.RoleMapper" >
-    <resultMap id="BaseResultMap" type="com.boom.rbac.domain.Role" >
-        <id column="id" property="id" jdbcType="VARCHAR" />
-        <result column="role" property="role" jdbcType="VARCHAR" />
-        <result column="description" property="description" jdbcType="VARCHAR" />
-        <result column="available" property="available" jdbcType="SMALLINT" />
-    </resultMap>
-    <sql id="roleFields">
-        id,name,description,available
-    </sql>
 
-    <select id="queryByName" resultMap="BaseResultMap">
-        SELECT
-        <include refid="roleFields"/>
-        FROM
-        role
-        WHERE
-        name = #{name}
-    </select>
-
-    <select id="queryAll" resultMap="BaseResultMap">
-        SELECT
-        <include refid="roleFields"/>
-        FROM
-        role
-    </select>
 </mapper>
