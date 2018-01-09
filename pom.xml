@@ -21,6 +21,7 @@
 
     <modules>
         <module>boom-rbac</module>
+        <module>file-manager</module>
     </modules>
 
     <dependencies>
@@ -50,7 +51,7 @@
         <dependency>
             <groupId>com.summer.base.utils</groupId>
             <artifactId>common-utils</artifactId>
-            <version>1.0.0</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
