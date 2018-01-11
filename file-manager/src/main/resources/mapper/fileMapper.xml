@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boom.mapper.FileResourceMapper" >
+    <resultMap id="BaseResultMap" type="com.boom.domain.SpecialFileResource" >
+        <id column="id" property="id" />
+        <result column="company_id" property="companyId" />
+        <result column="origin_name" property="originName" />
+        <result column="new_name" property="newName"/>
+        <result column="extension" property="extension" />
+        <result column="type" property="type" />
+        <result column="size" property="size" />
+        <result column="save_path" property="savePath" />
+        <result column="upload_date" property="uploadDate" />
+        <result column="modify_date" property="modifyDate" />
+    </resultMap>
+
+    <sql id="base_sql_list">
+        id,company_id,origin_name,new_name,extension,type,size,save_path,upload_date,modify_date
+    </sql>
+    <sql id="sql_list_with_no_date">
+        id,company_id,origin_name,new_name,extension,type,size,save_path
+    </sql>
+
+    <select id="queryById" resultMap="BaseResultMap">
+        SELECT
+          <include refid="base_sql_list"/>
+        FROM
+          file
+        WHERE
+          id = #{id}
+    </select>
+
+    <select id="queryByIds" resultMap="BaseResultMap">
+        SELECT
+        <include refid="base_sql_list"/>
+        FROM
+        file
+        WHERE
+        id IN
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="queryByCompanyId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="base_sql_list"/>
+        FROM
+        file
+        WHERE
+        company_id = #{companyId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO
+          file(<include refid="sql_list_with_no_date"/>)
+        VALUES
+          (#{id},#{companyId},#{originName},#{newName},#{extension},#{type},#{size},#{savePath})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM file WHERE id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE file SET
+            company_id = #{companyId},
+            origin_name = #{originName},
+            new_name = #{newName},
+            extension = #{extension},
+            type = #{type},
+            size = #{size},
+            save_path = #{savePath}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateSelective">
+        UPDATE file SET
+        <trim prefixOverrides=",">
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="originName != null">
+                origin_name = #{originName},
+            </if>
+            <if test="newName != null">
+                new_name = #{newName},
+            </if>
+            <if test="extension != null">
+                extension = #{extension},
+            </if>
+            <if test="type != type">
+                type = #{type},
+            </if>
+            <if test="size != size">
+                size = #{size},
+            </if>
+            <if test="savePath != null">
+                save_path = #{savePath},
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+</mapper>

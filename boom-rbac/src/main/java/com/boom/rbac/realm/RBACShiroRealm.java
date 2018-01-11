@@ -46,7 +46,7 @@ public class RBACShiroRealm extends AuthorizingRealm{
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        log.info("RBACShiroRealm.doGetAuthenticationInfo(),用户身份认证");
+        /*log.info("RBACShiroRealm.doGetAuthenticationInfo(),用户身份认证");
         String userName = (String) authenticationToken.getPrincipal();
 
         //从数据库中，根据当前用户名查找对应的用户
@@ -61,7 +61,8 @@ public class RBACShiroRealm extends AuthorizingRealm{
         return new SimpleAuthenticationInfo(userName,
                     user.getPassword(),
                     pwsdSalt,
-                    getName());
+                    getName());*/
+        return null;
     }
 
     @Override

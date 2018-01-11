@@ -1,6 +1,6 @@
 package com.boom.service.impl;
 
-import com.boom.dao.FileResourceMapper;
+import com.boom.mapper.FileResourceMapper;
 import com.boom.domain.SpecialFileResource;
 import com.boom.service.IFileResourceService;
 import com.google.common.collect.Lists;

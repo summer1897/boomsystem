@@ -42,10 +42,13 @@ public class FileResourceController {
         return ResultVo.fail("查询文件信息失败");
     }
 
-    @GetMapping("/query_by_company.json/{companyId}")
-    public ResultVo getByCompanyId(@PathVariable Integer companyId) {
+//    @CrossOrigin(origins = "http://localhost:9000")
+    @GetMapping("/lists.json/{companyId}")
+    public ResultVo getByCompanyId(@PathVariable Integer companyId,HttpServletResponse response) {
         logger.info("Controller layer:查询公司所有文件信息============>FileResourceController.getByCompanyId({})",companyId);
 
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Access-Control-Allow-Method","POST,GET");
         List<SpecialFileResource> specialFileResources = fileResourceService.queryByCompanyId(companyId);
         if (ObjectUtils.isNotEmpty(specialFileResources)) {
             return ResultVo.success(specialFileResources);

@@ -53,6 +53,23 @@ CREATE TABLE role_permission (
   PRIMARY KEY (role_id,permission_id)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+#create file manager table
+CREATE TABLE file (
+  id INT NOT NULL AUTO_INCREMENT COMMENT '文件资源唯一表示ID',
+  company_id INT NOT NULL COMMENT '文件所属者ID',
+  origin_name VARCHAR(300) NOT NULL COMMENT '上传文件原始名称',
+  new_name VARCHAR(300) NOT NULL COMMENT '新文件名，用于存放在服务端用',
+  extension VARCHAR(100) COMMENT '文件后缀',
+  type VARCHAR(200) COMMENT '文件类型',
+  size BIGINT DEFAULT 0 COMMENT '文件大小',
+  save_path VARCHAR(500) NOT NULL COMMENT '上传文件存放路径',
+  upload_date DATETIME NOT NULL DEFAULT now() COMMENT '文件上传日期',
+  modify_date DATETIME NOT NULL DEFAULT now() ON UPDATE now() COMMENT '文件修改日期',
+  PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARSET =utf8 COMMENT '文件信息表';
+
+
+
 #initial user data
 INSERT INTO user(id,user_name,nick_name,password,salt,state)
 values('2103957718490618842','admin','dh','UgWz3MsTsiEFYyGwtaCjWWQDdfg=','cdee2778fa3a4b7387a382d2fc276eb2',1),
@@ -111,3 +128,13 @@ VALUES ('139057968221540044','4354892092560042057','admin权限管理'),
   ('5944035280026638826','6806169867007708720','test系统测试报告'),
   ('3795179407599750294','7690077850232020760','logger日志管理'),
   ('3795179407599750294','3005305379139319283','logger日志查看');
+
+#insert file table datas
+INSERT INTO
+  file(id,company_id,origin_name,new_name,extension,type,size,save_path)
+VALUES
+  (null,1,'Java入门到精通.pdf','20180111223155001','pdf','',20000,'/Users/summer/Downloads'),
+  (null,1,'Hadoop入门到精通.pdf','20180111223155002','pdf','',50000,'/Users/summer/Downloads'),
+  (null,1,'Spark入门到精通.pdf','20180111223155003','pdf','',30000,'/Users/summer/Downloads'),
+  (null,1,'Flume入门到精通.pdf','20180111223155004','pdf','',30000,'/Users/summer/Downloads'),
+  (null,1,'Elasticsearch入门到精通.pdf','20180111223155005','pdf','',10000,'/Users/summer/Downloads');

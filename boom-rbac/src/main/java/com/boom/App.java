@@ -3,7 +3,11 @@ package com.boom;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Created by Intellij IDEA
@@ -13,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Description main startup class
  */
 @SpringBootApplication
-@MapperScan("com.boom.rbac.mapper")
+@MapperScan("com.boom.**.mapper")
 //@ComponentScan("com.boom.rbac.controller")
 public class App {
     //extends SpringBootServletInitializer {
@@ -25,4 +29,14 @@ public class App {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(App.class);
     }*/
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http://localhost:9000");
+            }
+        };
+    }
 }

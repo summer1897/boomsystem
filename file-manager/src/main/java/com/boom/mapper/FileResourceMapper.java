@@ -1,4 +1,4 @@
-package com.boom.dao;
+package com.boom.mapper;
 
 import com.boom.domain.SpecialFileResource;
 import org.apache.ibatis.annotations.Param;
